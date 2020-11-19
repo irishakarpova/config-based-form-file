@@ -13,7 +13,17 @@ const formBannerConfig = {
 	fields: [
 		{
 			name: 'id',
-			label: 'Banner ID',
+			label: 'ID',
+		},
+		{
+			name: 'name',
+			label: 'Name',
+			type: 'text'
+		},
+		{
+			name: 'email',
+			label: 'Email',
+			type: 'email'
 		},
 		{
 			name: 'manager',
@@ -29,11 +39,7 @@ const formBannerConfig = {
 				}
 			],
 		},
-		{
-			name: 'email',
-			label: 'Email',
-			type: 'email'
-		},
+
 		{
 			name: 'date',
 			label: 'Date',
@@ -55,24 +61,6 @@ const formBannerConfig = {
 		},
 
 		{
-			name: 'id_language',
-            label: 'Language',
-			values: [
-				{
-					value: 1,
-					text: 'German'
-				},
-				{
-					value: 2,
-					text: 'English'
-				},
-				{
-					value: 3,
-					text: 'Franch'
-				}
-			],
-		},
-		{
 			name: 'id_size',
             label: 'Size',
 			values: [
@@ -90,10 +78,7 @@ const formBannerConfig = {
 				}
 			],
 		},
-		{
-			name: 'bonus_category_id',
-			label: 'Bonus Category',
-		},
+
 		{
 			name: 'file',
 			label: 'file',

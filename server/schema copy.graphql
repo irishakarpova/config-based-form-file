@@ -14,17 +14,22 @@ input NewBannerInput {
 }
 type Banner {
   id: Int
-  brand: Int
-  name: String
-  language: Int
-  size: Int
+  manager: Int
+  email: String
   welcomeBonus: Int
-  bonusCategory: Int
   file: String
+  data: String
  }
 
 type FormConfigResult {
   fields: [FormField]
+}
+
+type FormField {
+  name: String!
+  label: String
+  type: String
+  values: [FormFieldValue]
 }
 
 type Option {
@@ -33,13 +38,10 @@ type Option {
   formConfig: FormConfigResult
 }
 
-type FormField {
-  name: String!
-  label: String
-  type: String
-  values: [FormFieldValue]
-  defaultEmpty: Boolean
+
+type FormFieldValue {
   value: String
+  text: String
 }
 
 type DataField {
@@ -50,18 +52,4 @@ type DataField {
 input FormFieldInput {
   name: String!
   value: String
-}
-
-type InputProps {
-    type: String
-    values: [FormFieldValue]
-}
-
-type FormFieldValue {
-  value: String
-  text: String
-}
-
-type FormDataResult {
-    fields: [DataField]
 }

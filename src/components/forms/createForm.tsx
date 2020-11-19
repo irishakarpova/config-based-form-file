@@ -94,7 +94,10 @@ export default function(props: CreateBanner): JSX.Element  {
                       touched={touched}
                       {...item} key={`index${item.name}`} />
                      
-                  : <DataField {...item} key={`index${item.name}`} />
+                  : <DataField 
+                      errors={errors}
+                      touched={touched}
+                      {...item} key={`index${item.name}`} />
                   
               })}
         
