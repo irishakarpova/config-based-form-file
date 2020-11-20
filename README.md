@@ -1,9 +1,6 @@
 <<<<<<< HEAD
 Building dynamic form based on configuration scheme.
 
-=======
-# Building dynamic form based on configuration scheme.
->>>>>>> eb21932496651d237855f29367d7b248ce04b62b
 - React
 - Apollo GraphQL
 - GraphQL Code Generator
@@ -11,3 +8,36 @@ Building dynamic form based on configuration scheme.
 - Material UI
 - FORMIK
 - Yup
+
+=======
+
+Generally, this typical task divided into several subtasks: 
+1. Getting graphQL configuration.
+
+```
+schema {
+  query: Query
+}
+type Query {
+  getBannersConfig: FormConfigResult
+}
+
+type FormConfigResult {
+  fields: [FormField]
+}
+type FormField {
+  name: String!
+  label: String
+  type: String
+  values: [FormFieldValue]
+  defaultEmpty: Boolean
+  value: String
+}
+
+```
+
+
+
+
+2. Rendering form fields according to the schema.
+3. Sending new data from client to server.
