@@ -2,37 +2,19 @@ schema {
   query: Query
   mutation: Mutation
 }
-
 type Query {
   getBannersConfig: FormConfigResult
 }
 type Mutation {
   createNewBanner(fields: [FormFieldInput]!): [DataField]
 }
-input NewBannerInput {
-  fields: [FormFieldInput]!
+input FormFieldInput {
+  name: String!
+  value: String
 }
-type Banner {
-  id: Int
-  brand: Int
-  name: String
-  language: Int
-  size: Int
-  welcomeBonus: Int
-  bonusCategory: Int
-  file: String
- }
-
 type FormConfigResult {
   fields: [FormField]
 }
-
-type Option {
-  key: String
-  value: String
-  formConfig: FormConfigResult
-}
-
 type FormField {
   name: String!
   label: String
@@ -41,27 +23,11 @@ type FormField {
   defaultEmpty: Boolean
   value: String
 }
-
 type DataField {
   name: String
   value: String
 }
-
-input FormFieldInput {
-  name: String!
-  value: String
-}
-
-type InputProps {
-    type: String
-    values: [FormFieldValue]
-}
-
 type FormFieldValue {
   value: String
   text: String
-}
-
-type FormDataResult {
-    fields: [DataField]
 }
