@@ -9,7 +9,6 @@
 - FORMIK
 - Yup
 
-=======
 
 Great way to organize any task divided into several subtasks.
 
