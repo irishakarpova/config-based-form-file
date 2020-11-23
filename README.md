@@ -94,5 +94,23 @@ const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_
   const [createNewItem, 
     {data, loading: createLoading}] = useMutation<CreateNewBanner>(CREATE_NEW_BANNER);
     
-```    
+``` 
+
+HandleSubmit calls the mutate function and pass new values to execute the mutation.
+
+```
+const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function) => {
+    const fields:Array<{name?:string, value?:string}> = [];
+    for (let i in values) {
+      if (values.hasOwnProperty(i)) {
+        fields.push({
+          name: i,
+          value: formFieldsConfig[i].type === 'file' ?  file : values[i]
+        });
+      }
+    }
+    props.createNewItem({variables: {fields: fields}});
+  };
+  
+  ```
 
