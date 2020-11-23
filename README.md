@@ -13,7 +13,7 @@
 Great way to organize any task divided into several subtasks.
 
 Here, I would define three task steps:
-## 1. Get graphQL configuration and TypeScript typings out of a GraphQL schema. 
+### 1. Get graphQL configuration and TypeScript typings out of a GraphQL schema. 
 
 ```
 schema {
@@ -70,7 +70,7 @@ const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_
 ```
 
 
-## 2. With Formik library create dynamically rendered form component and set initial values.
+### 2. With Formik library create dynamically rendered form component and set initial values.
 
 ```
   const formFieldsConfig:{[index:string]:{
@@ -87,7 +87,7 @@ const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_
   ```
 
 
-## 3. Update data with the useMutation hook.
+### 3. Update data with the useMutation hook.
 
 ```
   const [createNewItem, 
