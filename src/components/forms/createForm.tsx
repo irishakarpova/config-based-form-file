@@ -31,6 +31,9 @@ export default function(props: CreateBanner): JSX.Element  {
   if(!configData){
       return <FormSceleton />
   }
+  if(configData){
+    console.log('configData', configData)
+  }
   const config = Object.values(configData)[0]
   
   const formFieldsConfig:{[index:string]:{
@@ -45,7 +48,6 @@ export default function(props: CreateBanner): JSX.Element  {
   })
   
   const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function) => {
-    console.log('test')
     const fields:Array<{name?:string, value?:string}> = [];
     for (let i in values) {
       if (values.hasOwnProperty(i)) {

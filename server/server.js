@@ -14,6 +14,7 @@ const formBannerConfig = {
 		{
 			name: 'id',
 			label: 'ID',
+			value: 123
 		},
 		{
 			name: 'name',

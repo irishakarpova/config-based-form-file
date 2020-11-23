@@ -42,72 +42,6 @@ const theme = createMuiTheme({
         }
 
       },
-      MuiTab: {
-        root: {
-          minWidth: 0,
-          '@media (min-width: 0px)': {
-            minWidth: 100
-          },
-        },
-        wrapper: {
-          alignItems: 'center',
-          lineHeight: 1.2,
-          padding: '0 10px'
-        },
-      },   
-      MuiButton:{
-        label:{
-          fontSize: '0.675rem',
-          '@media ( min-width:596px )': {
-            fontSize: '0.875rem',
-          }
-        },
-        root:{
-          minWidth: '10px',
-        },
-      },
-      MuiTableCell:{
-        root: {
-          border: '1px solid rgb(239 239 239)',
-          borderTop: 'none'
-        },
-        head:{
-          color: "#C0C3C6",
-          background: "#2A3743",
-        },
-      },
-      MuiDropzoneArea:{
-        root:{
-          minHeight: 100
-        }
-      },
-      MuiDropzonePreviewList:{
-        image:{
-          maxWidth: 'none'
-        }
-      },
-      
-      /*MuiDrawer: {
-        paperAnchorTop: {
-          top: 96,
-          '@media (min-width:596px)': {
-            top: 76,
-          },
-        },  
-      },
-      */
-
-      MuiPopover:{
-        root:{
-          top: 77,
-          zIndex: 0,
-        }
-      },
-      MuiPaper:{
-        elevation9:{
-          boxShadow: '0px 1px 1px -9px rgba(0,0,0,0.01), 0px 2px 5px 0px rgba(0,0,0,0.02), 0px 0px 18px 2px rgba(0,0,0,0.03)',
-        }
-      },
       
       MuiOutlinedInput:{
         input:{
@@ -128,26 +62,7 @@ const theme = createMuiTheme({
         outlined:{
           transform: 'translate(20px, 16px) scale(1)',
         }
-      },
-      MuiAccordionSummary: {
-        root:{
-          display: 'flex',
-          justifyContent: 'center',
-          width: 200,
-          marginLeft:"calc(100% - 215px)",
-        },
-        content:{
-          display: 'inline-block',
-          margin: 0
-      }
-
-      },
-      MuiAccordionDetails: {
-        root:{
-          padding: '0 16px 10px 16px'
-       },
-      },
-  
+      },  
      },
     typography: {
       body2: {
