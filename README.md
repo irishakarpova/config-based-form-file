@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-Building dynamic form based on configuration scheme.
 
-=======
 
 # Building dynamic form based on configuration scheme.
 
->>>>>>> d516eb6ec8f47d67ff02853e44648afb0bedd67e
+
 - React
 - Apollo GraphQL
 - GraphQL Code Generator
@@ -21,13 +18,21 @@ Here, I would define three task steps:
 #### 1. Get graphQL configuration and TypeScript typings out of a GraphQL schema. 
 
 ```
+
 schema {
   query: Query
+  mutation: Mutation
 }
 type Query {
   getBannersConfig: FormConfigResult
 }
-
+type Mutation {
+  createNewBanner(fields: [FormFieldInput]!): [DataField]
+}
+input FormFieldInput {
+  name: String!
+  value: String
+}
 type FormConfigResult {
   fields: [FormField]
 }
@@ -38,6 +43,14 @@ type FormField {
   values: [FormFieldValue]
   defaultEmpty: Boolean
   value: String
+}
+type DataField {
+  name: String
+  value: String
+}
+type FormFieldValue {
+  value: String
+  text: String
 }
 
 ```
@@ -63,6 +76,20 @@ export interface GetBannersConfig_getBannersConfig {
 
 export interface GetBannersConfig {
   getBannersConfig: GetBannersConfig_getBannersConfig | null;
+}
+
+export interface CreateNewBanner_createNewBanner {
+  __typename: "DataField";
+  name: string | null;
+  value: string | null;
+}
+
+export interface CreateNewBanner {
+  createNewBanner: (CreateNewBanner_createNewBanner | null)[] | null;
+}
+
+export interface CreateNewBannerVariables {
+  fields: (FormFieldInput | null)[];
 }
 
 ```
@@ -103,7 +130,7 @@ const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_
 HandleSubmit calls the mutate function and pass new values to execute the mutation.
 
 ```
-const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function) => {
+  const handleOnSubmit = async (values:{[index:string]:string }, setSubmitting:Function) => {
     const fields:Array<{name?:string, value?:string}> = [];
     for (let i in values) {
       if (values.hasOwnProperty(i)) {
@@ -113,7 +140,16 @@ const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function)
         });
       }
     }
-    props.createNewItem({variables: {fields: fields}});
+    try{
+     await props.createNewItem({
+        variables: {fields: fields}
+      });
+    } catch(e){}
+    
+    if (setSubmitting){
+      setSubmitting(false)
+    }
+    props.setIsSnack(true)
   };
   
   ```
