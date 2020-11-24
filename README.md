@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-Building dynamic form based on configuration scheme.
 
-=======
 
 # Building dynamic form based on configuration scheme.
 
->>>>>>> d516eb6ec8f47d67ff02853e44648afb0bedd67e
+
 - React
 - Apollo GraphQL
 - GraphQL Code Generator
@@ -103,7 +100,7 @@ const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_
 HandleSubmit calls the mutate function and pass new values to execute the mutation.
 
 ```
-const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function) => {
+  const handleOnSubmit = async (values:{[index:string]:string }, setSubmitting:Function) => {
     const fields:Array<{name?:string, value?:string}> = [];
     for (let i in values) {
       if (values.hasOwnProperty(i)) {
@@ -113,7 +110,16 @@ const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function)
         });
       }
     }
-    props.createNewItem({variables: {fields: fields}});
+    try{
+     await props.createNewItem({
+        variables: {fields: fields}
+      });
+    } catch(e){}
+    
+    if (setSubmitting){
+      setSubmitting(false)
+    }
+    props.setIsSnack(true)
   };
   
   ```
