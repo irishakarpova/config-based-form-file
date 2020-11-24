@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { Button, LinearProgress } from '@material-ui/core';
 import getValidationSchema from './validation'
-import { useQuery, resetApolloContext } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import {useStyles} from './createFormStyles'
 import {GetBannersConfig} from './__generated__/GetBannersConfig'
 import {GET_CONFIG} from './queries'
@@ -11,7 +11,6 @@ import DataPicker from './dataPicker'
 import DataSelect from './dataSelect'
 import DataDropZoneArea from './dataDropZoneArea';
 import DataField from './dataField'
-import { resetCaches } from 'graphql-tag';
 
 interface CreateBanner{
     setIsSnack: Function
@@ -22,8 +21,6 @@ interface CreateBanner{
 }
  
 export default function(props: CreateBanner): JSX.Element  {
-
-
 
   const classes = useStyles();
   const [file, setFile] = React.useState();
@@ -37,9 +34,7 @@ export default function(props: CreateBanner): JSX.Element  {
   if(!configData){
       return <FormSceleton />
   }
-  if(configData){
-    console.log('configData', configData)
-  }
+
   const config = Object.values(configData)[0]
   
   const formFieldsConfig:{[index:string]:{
@@ -67,9 +62,8 @@ export default function(props: CreateBanner): JSX.Element  {
      await props.createNewItem({
         variables: {fields: fields}
       });
-    } catch(e){
-    }
-
+    } catch(e){}
+    
     if (setSubmitting){
       setSubmitting(false)
     }

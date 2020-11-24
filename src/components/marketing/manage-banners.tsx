@@ -9,8 +9,11 @@ import CreateForm from '../forms/createForm'
 import SnackbarInt from '../../utility/snackBar'
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { useStyles } from '../../utility/snackBarStyles';
+
 
 export default function() {
+  const classes = useStyles();
   const [isSnack, setIsSnack] = useState(true);
   const [createNewItem, 
     {data, error, loading: createLoading}] = useMutation<CreateNewBanner>(CREATE_NEW_BANNER);
@@ -20,7 +23,7 @@ export default function() {
   } 
 
   let errorMessage: string | undefined;
-  if (error){
+  if(error){
     if(
       error.networkError &&
       typeof window !== 'undefined' &&
@@ -39,6 +42,7 @@ export default function() {
           <Box p={3}>
             {error && (
               <Snackbar
+              classes={{root: classes.MuiSnackbar}}
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }} 
                 open={isSnack} 
                 onClose={handleCloseSnack}>
