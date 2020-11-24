@@ -78,6 +78,20 @@ export interface GetBannersConfig {
   getBannersConfig: GetBannersConfig_getBannersConfig | null;
 }
 
+export interface CreateNewBanner_createNewBanner {
+  __typename: "DataField";
+  name: string | null;
+  value: string | null;
+}
+
+export interface CreateNewBanner {
+  createNewBanner: (CreateNewBanner_createNewBanner | null)[] | null;
+}
+
+export interface CreateNewBannerVariables {
+  fields: (FormFieldInput | null)[];
+}
+
 ```
 
 Fetch data with the useQuery hook.
