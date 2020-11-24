@@ -18,13 +18,21 @@ Here, I would define three task steps:
 #### 1. Get graphQL configuration and TypeScript typings out of a GraphQL schema. 
 
 ```
+
 schema {
   query: Query
+  mutation: Mutation
 }
 type Query {
   getBannersConfig: FormConfigResult
 }
-
+type Mutation {
+  createNewBanner(fields: [FormFieldInput]!): [DataField]
+}
+input FormFieldInput {
+  name: String!
+  value: String
+}
 type FormConfigResult {
   fields: [FormField]
 }
@@ -35,6 +43,14 @@ type FormField {
   values: [FormFieldValue]
   defaultEmpty: Boolean
   value: String
+}
+type DataField {
+  name: String
+  value: String
+}
+type FormFieldValue {
+  value: String
+  text: String
 }
 
 ```
