@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { Button, LinearProgress } from '@material-ui/core';
 import getValidationSchema from './validation'
-import { useQuery } from '@apollo/client';
+import { useQuery, resetApolloContext } from '@apollo/client';
 import {useStyles} from './createFormStyles'
 import {GetBannersConfig} from './__generated__/GetBannersConfig'
 import {GET_CONFIG} from './queries'
@@ -11,19 +11,25 @@ import DataPicker from './dataPicker'
 import DataSelect from './dataSelect'
 import DataDropZoneArea from './dataDropZoneArea';
 import DataField from './dataField'
+import { resetCaches } from 'graphql-tag';
 
 interface CreateBanner{
     setIsSnack: Function
     data: {} | null | undefined
+    error: {} | undefined
     createLoading: Boolean
     createNewItem: Function
 }
  
 export default function(props: CreateBanner): JSX.Element  {
+
+
+
   const classes = useStyles();
   const [file, setFile] = React.useState();
 
-  const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_CONFIG);
+  const { error: configError, data: configData } = useQuery<GetBannersConfig>(GET_CONFIG,
+  {fetchPolicy: 'network-only'});
 
   if (configError){
     return <p>`Error! ${configError.message}`</p>
@@ -47,7 +53,7 @@ export default function(props: CreateBanner): JSX.Element  {
     return formFieldsConfig[item.name] = item;
   })
   
-  const handleOnSubmit = (values:{[index:string]:string }, setSubmitting:Function) => {
+  const handleOnSubmit = async (values:{[index:string]:string }, setSubmitting:Function) => {
     const fields:Array<{name?:string, value?:string}> = [];
     for (let i in values) {
       if (values.hasOwnProperty(i)) {
@@ -57,7 +63,13 @@ export default function(props: CreateBanner): JSX.Element  {
         });
       }
     }
-    props.createNewItem({variables: {fields: fields}});
+    try{
+     await props.createNewItem({
+        variables: {fields: fields}
+      });
+    } catch(e){
+    }
+
     if (setSubmitting){
       setSubmitting(false)
     }
@@ -66,7 +78,7 @@ export default function(props: CreateBanner): JSX.Element  {
   
   return(
     <Formik
-        validationSchema={getValidationSchema(config)}
+        //validationSchema={getValidationSchema(config)}
         initialValues={initialValues}
         onSubmit= {(values:{[index:string]:string}, {setSubmitting}) => { 
           handleOnSubmit(values, setSubmitting )}}
