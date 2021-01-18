@@ -72,7 +72,7 @@ export default function(props: CreateBanner): JSX.Element  {
   
   return(
     <Formik
-        //validationSchema={getValidationSchema(config)}
+        validationSchema={getValidationSchema(config)}
         initialValues={initialValues}
         onSubmit= {(values:{[index:string]:string}, {setSubmitting}) => { 
           handleOnSubmit(values, setSubmitting )}}
