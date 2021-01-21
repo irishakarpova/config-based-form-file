@@ -9,11 +9,8 @@ import SnackbarInt from '../../utility/snackBar'
 const Configform: React.FC  = (): JSX.Element => {
 
   return(
-
-      <Grid container>
         <Grid item xs={12} sm={10} md={6} lg={5} xl={4}>
           <Box p={3}>
-            
             <SnackbarInt 
               text='Banner successfully created!'/>
             
@@ -23,7 +20,7 @@ const Configform: React.FC  = (): JSX.Element => {
             <CreateForm/>
           </Box>
         </Grid>
-      </Grid>
+
 
   ) 
 }
