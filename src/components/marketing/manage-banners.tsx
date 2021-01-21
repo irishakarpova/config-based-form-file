@@ -21,9 +21,7 @@ const Configform: React.FC  = (): JSX.Element => {
             <Typography variant='h3' color="primary">
               Create a new Banner
             </Typography>
-      
-       
-
+            <CreateForm/>
           </Box>
         </Grid>
       </Grid>
