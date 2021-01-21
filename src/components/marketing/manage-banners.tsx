@@ -9,7 +9,7 @@ const Configform: React.FC  = (): JSX.Element => {
 
   return(
         <React.Fragment>
-          <Box p={3}>
+          <Box>
             <SnackbarInt 
               text='Banner successfully created!'/>
             <Typography variant='h3' color="primary">
