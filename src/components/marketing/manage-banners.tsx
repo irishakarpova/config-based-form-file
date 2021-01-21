@@ -6,7 +6,7 @@ import CreateForm from '../forms/createForm'
 import SnackbarInt from '../../utility/snackBar'
 
 
-const Congfigform: React.FC  = (): JSX.Element => {
+const Configform: React.FC  = (): JSX.Element => {
 
  
   return(
@@ -30,4 +30,4 @@ const Congfigform: React.FC  = (): JSX.Element => {
     </div>
   ) 
 }
-export default Congfigform
+export default Configform
