@@ -1,14 +1,14 @@
 import React from 'react';
 import { CssBaseline } from '@material-ui/core';
-import ManageBanners from './components/marketing/manage-banners'
+import Congfigform from './components/marketing/manage-banners'
 
 
 function App() {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ManageBanners />
-    </React.Fragment>
+      <Congfigform />
+    </ThemeProvider>
   );
 }
 
