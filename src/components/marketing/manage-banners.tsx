@@ -7,7 +7,7 @@ import SnackbarInt from '../../utility/snackBar'
 import { useStyles } from '../../utility/snackBarStyles';
 
 
-export default function() {
+const Congfigform: React.FC  = () => {
   const classes = useStyles();
  
   return(
@@ -31,3 +31,4 @@ export default function() {
     </div>
   ) 
 }
+export default Congfigform
