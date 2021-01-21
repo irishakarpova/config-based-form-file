@@ -1,6 +1,7 @@
 {
-  "name": "admin_up",
-  "version": "0.1.0",
+  "name": "congfigform",
+  "version": "1.1.0",
+  "main": "lib/App.js",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
