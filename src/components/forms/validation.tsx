@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 import {StringSchema} from 'yup';
+import {GetBannersConfig_getBannersConfig_fields as GetBannersConfig } from './__generated__/GetBannersConfig'
 
-export default function(config: {fields: Array<{
-  [type:string]: string
-}>}) {
+
+export default function(config: {fields: Array<GetBannersConfig>}) {
 
   const validation:{[index:string]: StringSchema<string | undefined, object>} = {};
 
-  config.fields.forEach((item: { [type: string]: string}) => {
+  config.fields.forEach((item: GetBannersConfig) => {
 
     if (item.type === 'email') {
       validation[item.name] = Yup.string()

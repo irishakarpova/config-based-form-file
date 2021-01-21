@@ -16,14 +16,16 @@ export default(props: ItemProps): JSX.Element => {
 
   return(
     <Field
-    component={TextField}
-    className={classes.formControl}
-    variant="outlined"
-    key={`index${props.name}`}
-    name={props.name}
-    type={props.type}
-    label={props.label}
-    error={(props.touched !== undefined) && (props.touched![props.name] && !!props.errors![props.name])}
+      component={TextField}
+      className={classes.formControl}
+      variant="outlined"
+      key={`index${props.name}`}
+      name={props.name}
+      type={props.type}
+      label={props.label}
+      error={(props.touched !== undefined) 
+        && (props.touched![props.name] 
+        && !!props.errors![props.name])}
   /> 
   )
 }

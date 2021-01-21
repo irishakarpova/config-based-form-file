@@ -5,14 +5,10 @@ import {Field} from 'formik';
 import { Select } from 'formik-material-ui';
 import MenuItem from '@material-ui/core/MenuItem';
 import {useStyles} from './createFormStyles'
+import {GetBannersConfig_getBannersConfig_fields as GetBannersConfig } from './__generated__/GetBannersConfig'
 
-interface ItemProps{
-  name: string
-  label: string
-  values: Array<{text:string, value:string}>
-}
 
-export default(props: ItemProps): JSX.Element => {
+export default(props: GetBannersConfig ): JSX.Element => {
     const classes = useStyles();
 
     return(
@@ -29,7 +25,7 @@ export default(props: ItemProps): JSX.Element => {
           }}
           key={`index${props.name}`}
         >
-          {props.values.map((textField: any) => {
+          {props.values!.map((textField: any) => {
             return(
               <MenuItem
                 key={textField.value}
