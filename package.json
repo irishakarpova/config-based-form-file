@@ -1,5 +1,5 @@
 {
-  "name": "congfigform",
+  "name": "configform",
   "version": "1.1.0",
   "main": "lib/App.js",
   "private": true,
