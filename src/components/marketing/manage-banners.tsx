@@ -8,7 +8,6 @@ import SnackbarInt from '../../utility/snackBar'
 
 const Configform: React.FC  = (): JSX.Element => {
 
- 
   return(
     <div>
       <Grid container>

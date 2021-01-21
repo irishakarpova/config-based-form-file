@@ -11,7 +11,7 @@ import DataDropZoneArea from './dataDropZoneArea';
 import DataField from './dataField'
 import { formBannerConfig as config} from './config'
 
-export default function()  {
+const CreateForm: React.FC  = (): JSX.Element => {
 
   const classes = useStyles();
   const [file, setFile] = React.useState();
@@ -78,3 +78,5 @@ export default function()  {
     </Formik>
   ) 
 }
+
+export default CreateForm;
