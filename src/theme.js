@@ -25,6 +25,12 @@ const theme = createMuiTheme({
           background: '#fff',
         }
       },
+      MuiFormControl:
+      {
+        root: {
+          marginTop: 16
+        }
+      },
       MuiFormHelperText:{
         contained:{
           position: 'absolute',
