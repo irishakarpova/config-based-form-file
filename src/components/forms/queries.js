@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_CONFIG = gql`
   query GetBannersConfig {
-    getBannersConfig{
+    getBannersConfig {
       fields {
         name
         label
